@@ -1,5 +1,6 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
+const reloadBtn = document.querySelector('#reloadBtn');
 
 
 const jump = () => {
@@ -12,6 +13,15 @@ setTimeout(() => {
  }, 500);
 
 }
+
+ function gameOver() {
+      
+      reloadBtn.style.display = 'block';
+          
+    }
+
+    
+
 
 const loop = setInterval(() => {
 
@@ -35,10 +45,12 @@ const loop = setInterval(() => {
         mario.style.width = '75px';
         mario.style.marginLeft = '50px';
         
+         gameOver();
 
          clearInterval(loop); 
    }
 }, 10);
+
 
 
 document.addEventListener('keydown', jump);
