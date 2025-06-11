@@ -14,16 +14,34 @@ setTimeout(() => {
 
 }
 
+
  function gameOver() {
       
       reloadBtn.style.display = 'block';
           
     }
 
+    let score = 0;
+    const scoreDisplay = document.getElementById('score');
+    const highScoreDisplay = document.getElementById('highScore');
+
+    let highScore = localStorage.getItem('highScore') || 0; 
+    highScoreDisplay.textContent =  `Recorde: ${highScore}`;
+
+    const scoreInterval = setInterval (() => {
+      if (reloadBtn.style.display === 'none') {
+         score ++;
+         scoreDisplay.textContent =  `Score: ${score}`;
+
+         if (score > highScore) {
+            highScore = score;
+            localStorage.setItem('highScore', highScore);
+            highScoreDisplay.textContent = `Recorde: ${highScore}`;
+         }
+      }
+    }, 200);
     
-
-
-const loop = setInterval(() => {
+     const loop = setInterval(() => {
 
      console.log('loop')
 
@@ -50,7 +68,6 @@ const loop = setInterval(() => {
          clearInterval(loop); 
    }
 }, 10);
-
 
 
 document.addEventListener('keydown', jump);
