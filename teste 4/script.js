@@ -71,3 +71,5 @@ setTimeout(() => {
 
 
 document.addEventListener('keydown', jump);
+
+
